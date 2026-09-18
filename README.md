@@ -1,6 +1,1 @@
 cd ~/work/core/pipelines/alpha/crm/crm_plus && rm -rf *:* && ls -d */ | wc -l
-
-
-
-
-cd ~/work/core/pipelines/alpha/crm/crm_plus && TPL=crm_plus_contact_kdm_audit_bronze/crm_plus_contact_kdm_audit_bronze.yaml && T=(crm_plus_meeting_attachment_bronze crm_plus_meeting_sub_type_bronze crm_plus_emp_info_bronze crm_plus_client_info_bronze crm_plus_event_attendee_bronze crm_plus_event_cc_budget_bronze crm_plus_coverage_info_stock_bronze crm_plus_client_hierarchy_info_bronze crm_plus_opty_flowstr crm_plus_opty_servicetype_info crm_plus_opty_participants_info crm_plus_opty_accesslist_info crm_plus_opty_failure_reason_gm crm_plus_actions_todos crm_plus_actions_todos_asgn) && F=(meeting_attachment_bronze meeting_sub_type_bronze employee_bronze mkt_client_bronze event_attendee_bronze event_budget_bronze coverage_bronze client_hierarchy_bronze opty_flowstr_bronze opty_servicetype_info_bronze opty_participants_info_bronze opty_accesslist_info_bronze opty_failure_reason_gm_bronze actions_todos_bronze actions_todos_asgn_bronze) && for i in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14; do mkdir -p "${T[$i]}" && sed -e "s|crm_plus_contact_kdm_audit_bronze|${T[$i]}|" -e "s|function: contact_kdm_audit_bronze|function: ${F[$i]}|" "$TPL" > "${T[$i]}/${T[$i]}.yaml"; done && ls -d */ | wc -l && grep -h "name:\|function:" crm_plus_emp_info_bronze/*.yaml
